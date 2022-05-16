@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(0,0,0);"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}" href="/">8gag</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <form class="form-inline" style="margin-left: 5px;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+        </form>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-dark" type="submit" style="margin-left: 5px;">Search</button>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/post/add}">
+                            <button type="button" class="btn btn-dark"  style="margin-left: 5px;">Add</button>
+                        </a>
+                    </li>
+
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <ul class="navbar-nav ms-auto mb-3 mb-lg-0">
+                            </li>
+                            <li class="nav-item" sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/login}">
+                                    <button type="button" class="btn btn-dark"  style="margin-left: 5px;">Log in</button>
+                                </a>
+                            </li>
+
+                            </li>
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a th:href="@{/profile}">
+                                    <button type="button" class="btn btn-dark"  style="margin-left: 5px;">[[${#request.userPrincipal.principal.fullName}]]</button>
+                                </a>
+                            </li>
+
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <form th:action="@{/logout}" method="post" style="margin-left: 5px;">
+                                    <input type="submit" class="btn btn-dark" value="Sign out">
+                                </form>
+                                </a>
+                            </li>
+                        </ul>
+        </div>
+    </div>
+</nav>

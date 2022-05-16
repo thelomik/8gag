@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous" />
+
+  <style>
+ body {background-color: #121212;}
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+ul {
+  list-style-type: none;
+}
+</style>
+</head>
+<body>
+<div class="p-3 mb-2 bg-dark text-white text-center" >
+  <h1>Add post</h1>
+  <div>
+    <form th:action="@{/post/add}" method="post" enctype="multipart/form-data"
+          style="max-width:600px; margin: 0 auto;"
+          th:object="${post}"
+    >
+      <div class="m-3">
+        <div class="form-grup row">
+          <label class="col-form label">Title</label>
+          <input type="text" class="form-control" th:field="*{title}" required/>
+        </div>
+      </div>
+      <div  class="m-3">
+        <div class="form-grup row">
+          <label for="s-description">Short description</label>
+          <textarea rows="2" th:field="*{description}" class="form-control" id="s-description" th:maxlength="512" required> </textarea>
+        </div>
+        <div class="form-grup row">
+          <label for="s-description">Tags</label>
+          <textarea rows="2" th:field="*{tags}" class="form-control" id="t" th:maxlength="512" required> </textarea>
+        </div>
+      </div>
+      <hr>
+      <p>
+      <label class="col-form label">Chose File</label>
+      </p>
+      <input type="file" name="image" id="fileImage" accept="image/png, image/jpeg" /><p>
+      <img id="thumbnail" alt="Preview"/>
+    </p>
+      <hr>
+
+      </div>
+
+      <div>
+        <input type="submit"  id="mySubmit" value="Add Post" class="btn btn-primary"/>
+      </div>
+
+    </form>
+
+  </div>
+<script>
+  $(document).ready(function(){
+  $('#fileImage').change(function(){
+    showImageThumbnail(this);
+  });
+    showChosenCategories();
+  });
+function showImageThumbnail(fileInput){
+    file = fileInput.files[0];
+    reader = new FileReader();
+    reader.onload = function(e){
+      $('#thumbnail').attr('src', e.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+
+</script>
+</body>
+</html>
