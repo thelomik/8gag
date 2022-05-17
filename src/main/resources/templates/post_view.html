@@ -29,7 +29,7 @@
 <!-- Responsive navbar-->
 <nav th:replace="/common/navbar.html"></nav>
 
-<div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:50px;">
+<div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:100px;">
 
     <div style="margin-left:380px">
         Date add: <h6 th:text="${post.addDate}">2022-05-16 19:05:47.905</h6>
@@ -46,6 +46,9 @@
                 <p>
                     <label for="s-description">Short description</label>
                     <textarea disabled rows="2" class="form-control" id="s-description" placeholder="" th:text="${post.description}"></textarea>
+
+                    <label for="s-description">Tags</label>
+                    <textarea disabled rows="2" class="form-control" id="tags" placeholder="" th:text="${post.tags}"></textarea>
 
             </div>
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Bartłomiej Chojnacki"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logo_transparent.png}">
+    <title>[[${pageTitle}]]</title>
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/btnlinkdisable.css}" href="../static/css/btnlinkdisable.css"/>
+    <style>
+             body {background-color: #121212;}
+                     img {
+              max-width: 70%;
+              max-height: 70%;
+        }
+        a{color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Responsive navbar-->
+<nav th:replace="/common/navbar.html"></nav>
+
+<section>
+    <div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:100px; ">
+        <h2>Search Results for [[${keyword}]]</h2>
+        <div class="row" th:each="post: ${searchResult}">
+            <a th:href="@{${post.postView2}}" th:title="${post.title}">
+            <img th:src="@{${post.photosImagePath}}" height="150"/>
+
+            </a>
+        </div>
+</section>
+
+
+<footer th:replace="/common/footer.html"></footer>
+</body>
+</html>

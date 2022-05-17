@@ -16,9 +16,12 @@ public class PostService {
     @Autowired
     private PostRepository repository;
 
-    public static final int SEARCH_RESULT_PER_PAGE = 10;
-
     @Autowired
     private PostRepository repo;
+
+
+   public List<Post> search(String keyword){
+       return repo.search(keyword);
+   }
 
 }

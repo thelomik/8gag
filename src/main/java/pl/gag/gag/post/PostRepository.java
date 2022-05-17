@@ -10,13 +10,9 @@ import java.util.List;
 
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
+    @Query(value = "Select * from post INNER JOIN post_tags ON post.id = post_tags.post_id where  tags LIKE %?1%", nativeQuery = true)
+    List<Post> search(String keyword);
 
-    @Query("SELECT s FROM Post s JOIN s.tags t WHERE t = LOWER(:tag)")
-    List<Post> retrieveByTag(@Param("tag") String tag);
-
-
-    @Query(value = "SELECT * FROM posts WHERE MATCH(title,description) "
-            + "AGAINST (?1)", nativeQuery = true)
-    public Page<Post> search(String keyword, Pageable pageable);
+//    title LIKE %?1% or description LIKE %?1% or
 
 }

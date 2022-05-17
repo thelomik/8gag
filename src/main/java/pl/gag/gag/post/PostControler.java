@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,7 +66,14 @@ public class PostControler {
         return "post_view";
     }
 
-
+    @GetMapping("/search")
+    public String search(@Param("keyword")String keyword ,Model model) {
+        List<Post> searchResult = postRepository.search(keyword);
+        model.addAttribute("searchResult",searchResult);
+        model.addAttribute("keyword",keyword);
+        model.addAttribute("pageTitle","Search results for :" + keyword);
+      return "result";
+    }
 
 
 }

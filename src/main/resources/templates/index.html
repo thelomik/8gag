@@ -17,6 +17,8 @@
               max-width: 70%;
               max-height: 70%;
         }
+        a{color: white;
+        }
         </style>
     </head>
 
@@ -25,20 +27,29 @@
         <!-- Responsive navbar-->
         <nav th:replace="/common/navbar.html"></nav>
 
-    <section>
-        <div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:50px; ">
+
+        <div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:100px; ">
             <h1>Posts</h1>
             <div>
 
-                <div th:each="post: ${postList}">
-                   <a th:href="@{${post.postView}}"> <h1 th:text="${post.title}">Posts</h1></a>
-                    <img th:src="@{${post.photosImagePath}}" />
-                </p>
-                </div>
+                <div class="container" style="max-width: 650px;">
+                <div th:each="post: ${postList}"   class="border border-secondary p-3 rounded"  >
+                    <div class="container" style="background-color: black; margin: 0 auto;">
+                   <a th:href="@{${post.postView}}"> <h3 th:text="${post.title}">Posts</h3></a>
 
+
+                    <img th:src="@{${post.photosImagePath}}" />
+                        <p>
+
+                    </p>
+
+
+
+                </div>
+            </div>
 
         </div>
-    </section>
+
 
 
         <footer th:replace="/common/footer.html"></footer>

@@ -32,7 +32,7 @@ public class Post {
     @Column(nullable = false)
     private Date addDate;
 
-    @ElementCollection
+    @ElementCollection()
     private List<String> tags = new ArrayList<>();
 
     @Transient
@@ -46,5 +46,11 @@ public class Post {
     public String getPostView(){
         if (photos == null || id == null) return null;
         return "post/post_view?id=" + id ;
+    }
+
+    @Transient
+    public String getPostView2(){
+        if (photos == null || id == null) return null;
+        return "post_view?id=" + id ;
     }
 }
