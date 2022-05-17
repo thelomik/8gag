@@ -31,12 +31,16 @@
 <section>
     <div class="p-3 mb-2 bg-dark text-white text-center" style="margin-top:100px; ">
         <h2>Search Results for [[${keyword}]]</h2>
-        <div class="row" th:each="post: ${searchResult}">
-            <a th:href="@{${post.postView2}}" th:title="${post.title}">
-            <img th:src="@{${post.photosImagePath}}" height="150"/>
+        <div class="row" style="margin:0 auto">
+        <div class="col-4" style="max-width: 110px; padding-left: 0px; padding-right: 0px;" th:each="post: ${searchResult}">
 
+            <a th:href="@{${post.postView2}}" th:title="${post.title}">
+            <img  th:src="@{${post.photosImagePath}}" height="150"/>
             </a>
         </div>
+
+        </div>
+    </div>
 </section>
 
 
