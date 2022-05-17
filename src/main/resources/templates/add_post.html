@@ -14,10 +14,7 @@
   <style>
  body {background-color: #121212;}
 /* Style the container for inputs */
-.container {
-  background-color: #f1f1f1;
-  padding: 20px;
-}
+
 
 #message {
   display:none;
@@ -59,7 +56,8 @@ ul {
 </style>
 </head>
 <body>
-<div class="p-3 mb-2 bg-dark text-white text-center" >
+<nav th:replace="/common/emptynav.html"></nav>
+<div class="p-3 mb-2 bg-dark text-white text-center"  style="margin-top:50px">
   <h1>Add post</h1>
   <div>
     <form th:action="@{/post/add}" method="post" enctype="multipart/form-data"
@@ -117,5 +115,6 @@ function showImageThumbnail(fileInput){
 }
 
 </script>
+<footer th:replace="/common/footer.html"></footer>
 </body>
 </html>
