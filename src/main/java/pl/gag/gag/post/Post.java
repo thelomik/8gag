@@ -3,6 +3,7 @@ package pl.gag.gag.post;
 import javax.persistence.Entity;
 
 import lombok.*;
+import pl.gag.gag.user.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -34,6 +35,13 @@ public class Post {
 
     @ElementCollection()
     private List<String> tags = new ArrayList<>();
+
+    @ElementCollection()
+    private List<String> comments = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Transient
     public String getPhotosImagePath() {
