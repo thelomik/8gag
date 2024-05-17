@@ -21,6 +21,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -110,17 +111,16 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<skip>true</skip>
+
 					<mainClass>pl.gag.gag.Application</mainClass>
 					<layout>JAR</layout>
 					<excludes>
 						<exclude>
+
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
-						  <goals>
-            	<goal>repackage</goal>
-       				 </goals>
+
 					</excludes>
 				</configuration>
 			</plugin>
