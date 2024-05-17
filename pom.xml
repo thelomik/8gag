@@ -111,8 +111,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-
-					<mainClass>pl.gag.gag.Application</mainClass>
+					<mainClass>pl/gag/gag/Application.java</mainClass>
 					<layout>JAR</layout>
 					<excludes>
 						<exclude>
