@@ -16,8 +16,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
     }
 
+
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        exposeDirectory("user-photos", registry);
+        registry.addResourceHandler("/user-photos/**")
+                .addResourceLocations("file:user-photos/");
     }
 
     private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {

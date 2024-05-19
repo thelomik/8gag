@@ -1,4 +1,5 @@
 services:
+
   db:
     image: postgres
     container_name: local_postgres
@@ -12,6 +13,7 @@ services:
       POSTGRES_DB: 8gag
     volumes:
       - local_pgdata:/var/lib/postgresql/data/
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: local_pgadmin4
@@ -21,9 +23,23 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
       PGADMIN_DEFAULT_PASSWORD: postgres
+
     volumes:
       - local_pgadmin4data:/var/lib/pgadmin
+
+  app:
+    image: lomik9/aws-demo:1.2
+    container_name: App
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./user-photos:/user-photos
+
 
 volumes:
   local_pgdata:
   local_pgadmin4data:
+
+
+
