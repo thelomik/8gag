@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -12,12 +12,12 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
     <link rel="stylesheet" th:href="@{/css/btnlinkdisable.css}" href="../static/css/btnlinkdisable.css"/>
     <style>
-             body {background-color: #121212;}
+        body {background-color: #121212;}
 
         textarea {
-    resize: none;
-}
-        </style>
+            resize: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
     </div>
 
     <form th:action="@{/post/post_view}" method="post"
-          style="max-width:600px; margin: 0 auto;" th:object="${post}"\>
+          style="max-width:600px; margin: 0 auto;" th:object="${post}">
 
         <div class="border border-secondary p-3 rounded">
             <div style="color:white;">
@@ -47,10 +47,15 @@
                     <textarea disabled rows="2" class="form-control" id="tags" placeholder="" th:text="${post.tags}"></textarea>
 
             </div>
-
         </div>
     </form>
 
+
+    <form sec:authorize="isAuthenticated()" th:action="@{/post/delete/{id}(id=${post.id})}"  method="post" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+</div>
 
 <footer th:replace="common/footer.html"></footer>
 </body>

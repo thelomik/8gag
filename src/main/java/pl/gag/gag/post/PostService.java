@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,5 +24,10 @@ public class PostService {
    public List<Post> search(String keyword){
        return repo.search(keyword);
    }
+
+      @Transactional
+    public void deletePostById(Integer postId) {
+        repository.deleteById(postId);
+    }
 
 }

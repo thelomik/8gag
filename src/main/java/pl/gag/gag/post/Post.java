@@ -33,6 +33,7 @@ public class Post {
     @Column(nullable = false)
     private Date addDate;
 
+
     @ElementCollection()
     private List<String> tags = new ArrayList<>();
 
